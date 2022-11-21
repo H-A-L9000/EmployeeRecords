@@ -11,7 +11,7 @@ void headMessage(const char *message)
     system("cls");
     printf("\t\t\t###########################################################################");
     printf("\n\t\t\t############                                                   ############");
-    printf("\n\t\t\t############   Employee Record Management System Project in C  ############");
+    printf("\n\t\t\t############   Employee Record System Project in C  ############");
     printf("\n\t\t\t############                                                   ############");
     printf("\n\t\t\t###########################################################################");
     printf("\n\t\t\t---------------------------------------------------------------------------\n");
