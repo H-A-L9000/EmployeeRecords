@@ -9,6 +9,8 @@
 //replace all fatherName and employeeName variables with LastName and FirstName
 //replace macrodefinitions 
 //replace isValidDate with isDateValid --> addEmployee 
+//replace sFileHeader with s_FileData
+//replace fileHeaderInfo with fileContent 
 
 //macro definitions 
 //allows for constant values to be declared throughout code, used globally  
@@ -36,9 +38,11 @@
 
 
 //adds a new name for some existing data type but does not create a new type 
-//typedef <existing_name> <alias_name>
+
+
 
 // we have declared an struct type variable Date with the typedef keyword. Now we can create struct type variables with Date 
+//define an anonymous struct and give it an alias Date. 
 typedef struct 
 {
     int mm; 
@@ -48,14 +52,16 @@ typedef struct
 } Date;
 
 //typedef <existing data type or keyword> <user given name for the datatype or keyword>
+//define anonymous struct and give it an alias sFileHeader
 typedef struct 
 {
     char username[MAX_USER_NAME]; 
     char password[MAX_PASSWORD]; 
 
-}sFileHeader;//sFileData
+}s_FileData;
 
-//typedef <existing data type or keyword> <user given name for the datatype or keyword>
+
+//define anonymous struct and give it alias sEmployeeData
 typedef struct 
 {
     char LastName[MAX_LAST_NAME]; 
@@ -177,7 +183,7 @@ void deleteEmployee()
     //change deleteID
     int employeeDelete = 0;
     //struct sFileData = fileDataInfo
-    sFileHeader fileHeaderInfo = {0};
+    s_FileHead fileHeaderInfo = {0};
 
     s_EmployeesInfo addEmployeeInfoInDataBase = {0};
     //declare pointers for both files, reg and temporary
