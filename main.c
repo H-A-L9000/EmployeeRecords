@@ -8,6 +8,7 @@
 
 //replace all fatherName and employeeName variables with LastName and FirstName
 //replace macrodefinitions 
+//replace isValidDate with isDateValid --> addEmployee 
 
 //macro definitions 
 //allows for constant values to be declared throughout code, used globally  
@@ -293,7 +294,7 @@ int  IsLeapYear(int year)
 
 
 //-------------IS_VALID_DATE 
-int isValidDate(Date *validDate)
+int isDateValid(Date *validDate)
 {
     //check range of year,month and day
     if (validDate->yyyy > MAX_YEAR ||
