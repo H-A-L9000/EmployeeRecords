@@ -6,7 +6,7 @@
 
 
 
-//replace all fatherName and employeeName variables with lastName and firstName
+//replace all fatherName and employeeName variables with LastName and FirstName
 //replace macrodefinitions 
 
 //macro definitions 
@@ -33,8 +33,11 @@
 
 
 
+
 //adds a new name for some existing data type but does not create a new type 
 //typedef <existing_name> <alias_name>
+
+
 
 
 // we have declared an struct type variable Date with the typedef keyword. Now we can create struct type variables with Date 
@@ -49,8 +52,8 @@ typedef struct
 //typedef <existing data type or keyword> <user given name for the datatype or keyword>
 typedef struct 
 {
-    char username[MAX_SIZE_USER_NAME]; 
-    char password[MAX_SIZE_PASSWORD]; 
+    char username[MAX_USER_NAME]; 
+    char password[MAX_PASSWORD]; 
 
 }sFileHeader;//sFileData
 
@@ -64,7 +67,7 @@ typedef struct
     unsigned int employee_id; 
     float employeeSalary;  
 
-}s_EmployeeInfo;
+}s_EmployeesInfo;
 
 
 
@@ -187,8 +190,8 @@ void addEmployeeInDataBase()
     {
         printf("\n\t\t\tFather Name  = ");
         fflush(stdin);
-        fgets(addEmployeeInfoInDataBase.lastName,MAX_LAST_NAME,stdin);
-        status = isNameValid(addEmployeeInfoInDataBase.lastName);
+        fgets(addEmployeeInfoInDataBase.LastName,MAX_LAST_NAME,stdin);
+        status = isNameValid(addEmployeeInfoInDataBase.LastName);
         if (!status)
         {
             printf("\n\t\t\tName contain invalid character. Please enter again.");
@@ -200,7 +203,7 @@ void addEmployeeInDataBase()
         printf("\n\t\t\tEmployee Name  = ");
         fflush(stdin);
         fgets(addEmployeeInfoInDataBase.FirstName,MAX_FIRST_NAME,stdin);
-        status = isNameValid(addEmployeeInfoInDataBase.firstName);
+        status = isNameValid(addEmployeeInfoInDataBase.FirstName);
         if (!status)
         {
             printf("\n\t\t\tName contain invalid character. Please enter again.");
@@ -238,4 +241,3 @@ void addEmployeeInDataBase()
     fwrite(&addEmployeeInfoInDataBase,sizeof(addEmployeeInfoInDataBase), 1, fp);
     fclose(fp);
 }
-
