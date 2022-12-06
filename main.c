@@ -208,7 +208,70 @@ void menu()
 
 
 //----------UPDATE_CREDENTIAL 
+void updateCredential(void)
+{
+    sFileHeader fileHeaderInfo = {0};
+    FILE *fp = NULL;
 
+     
+    unsigned char userName[MAX_SIZE_USER_NAME] = {0};
+    unsigned char password[MAX_SIZE_PASSWORD] = {0};
+    headMessage("Update Credential");
+    fp = fopen(FILE_NAME,"r"); ///was rb, changed the file option to r
+    if(fp == NULL)
+    {
+        printf("File is not opened\n");
+        exit(1);
+    }
+    ///fread reads data from a given file that it is poointed to
+    ///&addEmployeeInfoInDataBase is a block in memory it refers to
+    ///sizeof(), refers to the size in bytes of each element to be read
+    ///1, reads the elements one at a time
+    ///fp is the pointer to a FILE object that specifies an input stream 
+    fread (&fileHeaderInfo,FILE_HEADER_SIZE, 1, fp);
+
+     ///fseek sets the file position of the stream to the give offset
+    ///fp is the pointer to the file object that idetifies the stream
+    ///0 refers to the size defined in the global definition
+    ///SEEK_SET refers to the position in which the fp is being added to
+    if (fseek(fp,0,SEEK_SET) != 0)
+    {
+        fclose(fp);
+        printf("\n\t\t\tFacing issue while updating password\n");
+        exit(1);
+    }
+    printf("\n\n\t\t\tNew Username:");
+    ///scanf("%s", &userName)
+    ///fflush(stdin);
+
+    ///fgets inouts characters from the specified file into the array userName until a new line or end-of-file is encountered
+    ///username is the array 
+    ///MAX_SIZE_USER_NAME lets fgets know that it can read up to the size of the array
+    ///stdin refers to the new input that was asked when creating a new username
+    fgets(userName,MAX_SIZE_USER_NAME,stdin);
+    printf("\n\n\t\t\tNew Password:");
+    ///scanf("%s", &password);
+    ///fflush(stdin);
+    fgets(password,MAX_SIZE_PASSWORD,stdin);
+    ///strncpy() copies at most the size of the userName of string username in the fileHeader 
+    ///info into the array userName and returns the string head in the array userName.
+    strncpy(fileHeaderInfo.username,userName,sizeof(userName));
+
+     ///strncpy() copies at most the size of the password of string password in the fileHeader 
+    ///info into the array password and returns the string head in the array password.
+    strncpy(fileHeaderInfo.password,password,sizeof(password));
+
+    ///fwrite function writes data from thr array that is pointed to (fileHeaderInfo)
+    ///FILE_HEADER_SIZE is the max size how how many elements can be written in the array.
+    ///fp is the is the pointer to a FILE object that specifies an output stream.
+    fwrite(&fileHeaderInfo,FILE_HEADER_SIZE, 1, fp);
+    fclose(fp);
+    printf("\n\t\t\tYour Password has been changed successfully");
+    printf("\n\t\t\ttLogin Again:");
+    fflush(stdin);
+    getchar();
+    exit(1);
+}
 
 
 //----------ADD EMPLOYEE
