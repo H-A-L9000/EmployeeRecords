@@ -69,111 +69,8 @@ typedef struct
 
 
 
-======================
+============================
 
-void printMessageCenter(const char* message)
-{
-    int len = 0; 
-    int pos = 0; 
-
-    len = (78 - strlen(message)/2); 
-    printf("\t\t\t"); 
-    
-    for(pos = 0; pos < len; pos++)
-    {
-        printf(" "); 
-
-    }
-    printf("%s", message) 
-}
-
-//Head message
-void headMessage(const char *message)
-{
-    system("cls");
-    printf("\t\t\t###########################################################################");
-    printf("\n\t\t\t############                                                   ############");
-    printf("\n\t\t\t############   Employee Record Management System Project in C  ############");
-    printf("\n\t\t\t############                                                   ############");
-    printf("\n\t\t\t###########################################################################");
-    printf("\n\t\t\t---------------------------------------------------------------------------\n");
-    printMessageCenter(message);
-    printf("\n\t\t\t----------------------------------------------------------------------------");
-}
-//Display message
-void welcomeMessage()
-{
-    headMessage("www.aticleworld.com");
-    printf("\n\n\n\n\n");
-    printf("\n\t\t\t  **-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**\n");
-    printf("\n\t\t\t        =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
-    printf("\n\t\t\t        =                  WELCOME                  =");
-    printf("\n\t\t\t        =                    TO                     =");
-    printf("\n\t\t\t        =               Employee Record             =");
-    printf("\n\t\t\t        =                 MANAGEMENT                =");
-    printf("\n\t\t\t        =                   SYSTEM                  =");
-    printf("\n\t\t\t        =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
-    printf("\n\t\t\t  **-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**\n");
-    printf("\n\n\n\t\t\t Enter any key to continue.....");
-    getch();
-}
-
-//----------IS_NAME_VALID
-int isNameValid(const char *name)
-{
-    int validName = 1;
-    int len = 0;
-    int index = 0;
-    len = strlen(name);
-    for(index =0; index <len ; ++index)
-    {
-        if(!(isalpha(name[index])) && (name[index] != '\n') && (name[index] != ' '))
-        {
-            validName = 0;
-            break;
-        }
-    }
-    return validName;
-}
-
-
-// Function to check leap year.
-//Function returns 1 if leap year
-//------------IS_LEAP_YEAR
-int  IsLeapYear(int year)
-{
-    return (((year % 4 == 0) &&
-             (year % 100 != 0)) ||
-            (year % 400 == 0));
-}
-// returns 1 if given date is valid.
-
-
-//-------------IS_VALID_DATE 
-int isValidDate(Date *validDate)
-{
-    //check range of year,month and day
-    if (validDate->yyyy > MAX_YEAR ||
-            validDate->yyyy < MIN_YEAR)
-        return 0;
-    if (validDate->mm < 1 || validDate->mm > 12)
-        return 0;
-    if (validDate->dd < 1 || validDate->dd > 31)
-        return 0;
-    //Handle feb days in leap year
-    if (validDate->mm == 2)
-    {
-        if (IsLeapYear(validDate->yyyy))
-            return (validDate->dd <= 29);
-        else
-            return (validDate->dd <= 28);
-    }
-    //handle months which has only 30 days
-    if (validDate->mm == 4 || validDate->mm == 6 ||
-            validDate->mm == 9 || validDate->mm == 11)
-        return (validDate->dd <= 30);
-    return 1;
-}
 
 //----------IS_FILE_EXISTS
 
@@ -206,6 +103,44 @@ int isFileExists(const char *path)
 
 
 //----------MAIN()
+
+
+
+
+//----------HEAD MESSAGE
+void headMessage(const char *message)
+{
+    system("cls");
+    printf("\t\t\t###########################################################################");
+    printf("\n\t\t\t############                                                   ############");
+    printf("\n\t\t\t############   Employee Record Management System Project in C  ############");
+    printf("\n\t\t\t############                                                   ############");
+    printf("\n\t\t\t###########################################################################");
+    printf("\n\t\t\t---------------------------------------------------------------------------\n");
+    printMessageCenter(message);
+    printf("\n\t\t\t----------------------------------------------------------------------------");
+}
+
+
+//-----------DISPLAY MESSAGE 
+void welcomeMessage()
+{
+    headMessage("www.aticleworld.com");
+    printf("\n\n\n\n\n");
+    printf("\n\t\t\t  **-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**\n");
+    printf("\n\t\t\t        =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+    printf("\n\t\t\t        =                  WELCOME                  =");
+    printf("\n\t\t\t        =                    TO                     =");
+    printf("\n\t\t\t        =               Employee Record             =");
+    printf("\n\t\t\t        =                 MANAGEMENT                =");
+    printf("\n\t\t\t        =                   SYSTEM                  =");
+    printf("\n\t\t\t        =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+    printf("\n\t\t\t  **-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**\n");
+    printf("\n\n\n\t\t\t Enter any key to continue.....");
+    getch();
+}
+
+
 
 
 
@@ -325,4 +260,77 @@ void deleteEmployee()
     rename("tmp.bin",FILE_NAME);
 }
 
+
+//----------IS_NAME_VALID
+int isNameValid(const char *name)
+{
+    int validName = 1;
+    int len = 0;
+    int index = 0;
+    len = strlen(name);
+    for(index =0; index <len ; ++index)
+    {
+        if(!(isalpha(name[index])) && (name[index] != '\n') && (name[index] != ' '))
+        {
+            validName = 0;
+            break;
+        }
+    }
+    return validName;
+}
+
+
+// Function to check leap year.
+//Function returns 1 if leap year
+//------------IS_LEAP_YEAR
+int  IsLeapYear(int year)
+{
+    return (((year % 4 == 0) &&
+             (year % 100 != 0)) ||
+            (year % 400 == 0));
+}
+// returns 1 if given date is valid.
+
+
+//-------------IS_VALID_DATE 
+int isValidDate(Date *validDate)
+{
+    //check range of year,month and day
+    if (validDate->yyyy > MAX_YEAR ||
+            validDate->yyyy < MIN_YEAR)
+        return 0;
+    if (validDate->mm < 1 || validDate->mm > 12)
+        return 0;
+    if (validDate->dd < 1 || validDate->dd > 31)
+        return 0;
+    //Handle feb days in leap year
+    if (validDate->mm == 2)
+    {
+        if (IsLeapYear(validDate->yyyy))
+            return (validDate->dd <= 29);
+        else
+            return (validDate->dd <= 28);
+    }
+    //handle months which has only 30 days
+    if (validDate->mm == 4 || validDate->mm == 6 ||
+            validDate->mm == 9 || validDate->mm == 11)
+        return (validDate->dd <= 30);
+    return 1;
+}
+
+void printMessageCenter(const char* message)
+{
+    int len = 0; 
+    int pos = 0; 
+
+    len = (78 - strlen(message)/2); 
+    printf("\t\t\t"); 
+    
+    for(pos = 0; pos < len; pos++)
+    {
+        printf(" "); 
+
+    }
+    printf("%s", message) 
+}
 
