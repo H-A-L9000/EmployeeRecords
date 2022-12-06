@@ -107,7 +107,65 @@ int isFileExists(const char *path)
 
 
 //----------LOGIN()
+//login password
+void login()
+{
+    unsigned char userName[MAX_SIZE_USER_NAME] = {0};
+    unsigned char password[MAX_SIZE_PASSWORD] = {0};
+    int attempts=0;
+    sFileHeader fileHeaderInfo = {0};
+    FILE *fp = NULL;
 
+    ///changes the new page message to Login from the headmessage function
+    headMessage("Login");
+    fp = fopen(FILE_NAME,"r");
+    if(fp == NULL)
+    {
+        printf("File is not opened\n");
+        exit(1);
+    }
+    fread (&fileHeaderInfo,FILE_HEADER_SIZE, 1, fp);
+    fclose(fp);
+    do
+    {
+        printf("\n\n\n\t\t\t\tUsername:");
+        ///fgets inouts characters from the specified file into the array userName until a new line or end-of-file is encountered
+        ///username is the array 
+        ///MAX_SIZE_USER_NAME lets fgets know that it can read up to the size of the array
+        ///stdin refers to the new input that was asked when creating a new username
+
+        fgets(userName,MAX_SIZE_USER_NAME,stdin);
+        printf("\n\t\t\t\tPassword:");
+
+        ///fgets inouts characters from the specified file into the array password until a new line or end-of-file is encountered
+        ///password is the array 
+        ///MAX_SIZE_PASSWORD lets fgets know that it can read up to the size of the array
+        ///stdin refers to the new input that was asked when creating a new password
+        fgets(password,MAX_SIZE_PASSWORD,stdin);
+
+        ///strcmp compares userName with the userName saved in the fileHeaderInfo and the password 
+        ///with the password saved in the fileHeaderInfo, but if the headerINfo is 
+        if((strcmp(userName,fileHeaderInfo.username)) && (strcmp(password,fileHeaderInfo.password)))
+        {
+            menu();
+        }
+        else
+        {
+            printf("\t\t\t\tLogin Failed Enter Again Username & Password\n\n");
+            attempts++;
+        }
+    }
+    /// loops 3 times asking for the username and password 
+    while(attempts<=3);
+    if(attempts>3)
+    {
+        ///prints the new headmessage after having 3 attempts to login into the system
+        headMessage("Login Failed");
+        printf("\t\t\t\tSorry,Unknown User.");
+        getchar();
+        system("cls");
+    }
+}
 
 
 
