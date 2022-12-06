@@ -18,14 +18,14 @@
 #define MIN_YEAR 1900 
 //constant called MIN_YR contains value 1900 
 #define MAX_USER_NAME 30 
-//constant called MAX_SIZE_USER_NAME contains value 30 
+//constant called MAX_USER_NAME contains value 30 
 #define MAX_PASSWORD 20 
-//constant called MAX_SIZE_PASSWORRD contains value 20 
+//constant called MAX_PASSWORRD contains value 20 
 #define FILE_NAME "EmployeeRecordSystem.bin"
 //string consant called FILE_NAME contains value "EmployeeRecordSystem.bin"
 #define MAX_LAST_NAME 50 
-//constant called MAX_FATHER_NAME contains value 50 
-#define MAX_EMPLOYEE_NAME 50 
+//constant called MAX_LAST_NAME contains value 50 
+#define MAX_FIRST_NAME 50 
 //constant MAX_FIRST_NAME contains value 50 
 #define MAX_EMPLOYEE_ADDRESS 300
 //constant MAX_EMPLOYEE_ADDRESS contains value 300  
