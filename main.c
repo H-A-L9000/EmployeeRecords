@@ -26,7 +26,7 @@
 #define MAX_LAST_NAME 50 
 //constant called MAX_FATHER_NAME contains value 50 
 #define MAX_EMPLOYEE_NAME 50 
-//constant MAX_EMPLOYEE_NAME contains value 50 
+//constant MAX_FIRST_NAME contains value 50 
 #define MAX_EMPLOYEE_ADDRESS 300
 //constant MAX_EMPLOYEE_ADDRESS contains value 300  
 #define FILE_HEADER_SIZE sizeof(sFileHeader)
