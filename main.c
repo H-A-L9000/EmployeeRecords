@@ -152,6 +152,55 @@ void welcomeMessage()
 
 
 //----------MENU()
+//Displays the menu and shows the options that you'd like to do with the file
+void menu()
+{
+    int option = 0;
+    do
+    {
+        ///changes the headmessage from the head message function whenever a new "page" is being called
+        headMessage("MAIN MENU");
+        printf("\n\n\n\t\t\t1.Add employee");
+        printf("\n\t\t\t2.Search employee");
+        printf("\n\t\t\t3.View employee");
+        printf("\n\t\t\t4.Delete employee");
+        printf("\n\t\t\t5.Update Password");
+        printf("\n\t\t\t0.Exit");
+        printf("\n\n\n\t\t\tEnter option: ");
+     
+        scanf("%d", &option); 
+
+        if(option == 1){
+            addEmployeeInDataBase(); /// calls the addEmployeeinDataBase() function
+            break;
+        }
+        else if(option == 2){ ///calls the searchEmployee() function
+            searchEmployee();
+            break;
+        }
+        else if(option == 3){ ///calls the viewEmployee() function
+            viewEmployee();
+            break;
+        }
+        else if(option == 4){ ///calls the deleteEmployee() function
+            deleteEmployee();
+            break;
+        }
+        else if(option == 5){
+            updateCredential(); ///calls the updateCredential() function
+            break;
+        }
+        else if(option == 0){ ///leaces the main menu
+            printf("\n\n\n\t\t\t\tExiting Main Menu:\n\n\n\n\n");
+            break;
+        }
+        default:
+            printf("\n\n\n\t\t\tInvalid Input. Enter one of the valid options listed: "); ///prints out message when an invalid option number was put in
+    }                                                       ///if-else statement ended
+    
+    while(option!=0);                                      //Loop Ended
+                                     
+}
 
 
 
@@ -170,7 +219,78 @@ void welcomeMessage()
 
 
 //-----------SEARCH EMPLOYEE
+// search employee
+void searchEmployee()
+{
+    int found = 0;
+    int employeeId =0;
+    s_EmployeesInfo addEmployeeInfoInDataBase = {0};
+    FILE *fp = NULL;
+    ///rb: opens an existing file and reading it in binary mode
+    ///
+    fp = fopen(FILE_NAME,"rb");
+    if(fp == NULL)
+    {
+        printf("\n\t\t\tFile is not opened\n");
+        ///terminates the file as it cannot perform any other tasks
+        exit(1); 
+    }
+    ///displays that we are in the search Employee option now
+    headMessage("SEARCH EMPLOYEE");
 
+    ///fseek sets the file position of the stream to the give offset
+    ///fp is the pointer to the file object that idetifies the stream
+    ///FILE_HEADER_SIZE refers to the size defined in the global definition
+    ///SEEK_SET refers to the position in which the fp is being added to
+    if (fseek(fp,FILE_HEADER_SIZE,SEEK_SET) != 0)
+    {
+        fclose(fp);
+        printf("\n\t\t\tFacing issue while reading file\n");
+        exit(1);
+    }
+    printf("\n\n\t\t\tEnter employee ID NO to search:");
+    ///reads the ID number input for the Employee into the file
+    scanf("%u",&employeeId);
+
+    ///fread reads data from a given file that it is poointed to
+    ///&addEmployeeInfoInDataBase is a block in memory it refers to
+    ///sizeof(), refers to the size in bytes of each element to be read
+    ///1, reads the elements one at a time
+    ///fp is the pointer to a FILE object that specifies an input stream 
+    while (fread (&addEmployeeInfoInDataBase, sizeof(addEmployeeInfoInDataBase), 1, fp))
+    {
+        ///compares to the employee added into the file to the id that is being searched for
+        if(addEmployeeInfoInDataBase.employee_id == employeeId)
+        {
+            found = 1;
+            break;
+        }
+    }
+    if(found)
+    {
+        ///prints out the employee ID from when it was added to the dtabase
+        ///prints out the employeeName from when it was added into the database
+        ///prints out the salary from the database 
+        ///prints out the lastname of the employee
+        ///prints out the address of the employee
+        ///prints out the date of when the employee was hired
+        printf("\n\t\t\tEmployee id = %d\n",addEmployeeInfoInDataBase.employee_id);    
+        printf("\n\t\t\tEmployee name = %s",addEmployeeInfoInDataBase.employeeName);
+        printf("\t\t\tEmployee Salary = %f\n",addEmployeeInfoInDataBase.employeeSalary);
+        printf("\t\t\tFather Name = %s",addEmployeeInfoInDataBase.lastName);
+        printf("\n\t\t\tEmployee Address = %s",addEmployeeInfoInDataBase.employeeAddr);
+        printf("\t\t\tEmployee Admission Date(day/month/year) =  (%d/%d/%d)",addEmployeeInfoInDataBase.employeeJoiningDate.dd,
+               addEmployeeInfoInDataBase.employeeJoiningDate.mm, addEmployeeInfoInDataBase.employeeJoiningDate.yyyy);
+    }
+    else
+    {
+        printf("\n\t\t\tNo Record");
+    }
+    fclose(fp);
+    printf("\n\n\n\t\t\tPress any key to go to main menu.....");
+    fflush(stdin);
+    getchar();
+}
 
 
 //-----------DELETE EMPLOYEE 
