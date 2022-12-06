@@ -11,6 +11,8 @@
 //replace isValidDate with isDateValid --> addEmployee 
 //replace sFileHeader with s_FileData
 //replace fileHeaderInfo with fileContent 
+//replace s_EmployeesInfo with s_EmployeeData 
+
 
 //macro definitions 
 //allows for constant values to be declared throughout code, used globally  
@@ -305,7 +307,7 @@ void deleteEmployee()
     //struct sFileData = fileDataInfo
     s_FileHead fileHeaderInfo = {0};
 
-    s_EmployeesInfo addEmployeeInfoInDataBase = {0};
+    s_EmployeeData addEmployeeInfoInDataBase = {0};
     //declare pointers for both files, reg and temporary
     FILE *fp = NULL;
     FILE *tmpFp = NULL;
