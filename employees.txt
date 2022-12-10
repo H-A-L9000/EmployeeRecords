@@ -1,0 +1,10 @@
+Dela-Cruz Francine 962-Lower-Landing-Road-Blackwood-NJ 2019-01-16 1234 50000.00
+Derry Halle  17-Cooper-Street-Camden-NJ 2019-09-07 2345 65400.00
+Nguyen Sienna 190-Rutgers-Circle-Camden-NJ 2020-03-18 3456 80,000.00
+Smith John 92-CandyCane-Lane-NewYork-NY 2012-03-15 4567 200,000.00
+Doe Jane 25-Nicholas-Avenue-NorthBrunswick-NJ 2015-11-16 5678 170,530.00
+Davis James 15-Pine-Street-CherryHill-NJ 2017-05-16  6789 80,000
+Johnson Kaitlyn 24-Eve-Avenue-Philadelphia-PA 2018-06-15 7890 96750.00
+McNalley Brian 15-Chestnut-Street-Philadelphia-PA 2018-12-26 8910 75,620.00
+Madison James 15-Dover-Street-Dover-DE 2017-03-16 9101 98,900.00
+Brandy Michael 48-Market-Street-Brooklyn-NY 2019-07-08 1011 157,860.00
