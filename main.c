@@ -121,7 +121,7 @@ void init()
     const char defaultPassword[] ="aticleworld\n";
     
     //QUESTION
-    sFileHeader fileHeaderInfo = {0};
+    s_FileData fileContent = {0};
 
     //NEED TEXT FILE
     
@@ -138,17 +138,17 @@ void init()
         
         //fopen function will open up the text file
         //and "wp" creates a binary file for writing
-        fp = fopen(text_file,"wb");
+        fp = fopen(FILE_NAME,"wb");
 
         //If the file is not equal to null
         if(fp != NULL)
         {
             //Copy default password to the file
-            strncpy(fileHeaderInfo.password,defaultPassword,sizeof(defaultPassword));
-            strncpy(fileHeaderInfo.username,defaultUsername,sizeof(defaultUsername));
+            strncpy(fileContent.password,defaultPassword,sizeof(defaultPassword));
+            strncpy(fileContent.username,defaultUsername,sizeof(defaultUsername));
             
             //fwrite to the file
-            fwrite(&fileHeaderInfo,FILE_HEADER_SIZE, 1, fp);
+            fwrite(&fileContent,FILE_HEADER_SIZE, 1, fp);
             //Close the file
             fclose(fp);
         }
@@ -398,7 +398,8 @@ void updateCredential(void)
 void addEmployeeInDataBase()
 {
 
-    s_EmployeesInfo addEmployeeInfoInDataBase = {0};
+    s_EmployeeData addEmployeeInfoInDataBase = {0};
+
 
     //File function that returns a FILE pointer
     FILE *fp = NULL;
@@ -436,8 +437,8 @@ void addEmployeeInDataBase()
     {
         printf("\n\t\t\tLast Name  = ");
         fflush(stdin);
-        fgets(addEmployeeInfoInDataBase.lastName,MAX_LAST_NAME,stdin);
-        status = isNameValid(addEmployeeInfoInDataBase.lastName);
+        fgets(addEmployeeInfoInDataBase.LastName,MAX_LAST_NAME,stdin);
+        status = isNameValid(addEmployeeInfoInDataBase.LastName);
         if (!status)
         {
             printf("\n\t\t\tName contain invalid character. Please enter again.");
@@ -450,8 +451,8 @@ void addEmployeeInDataBase()
     {
         printf("\n\t\t\tEmployee Name  = ");
         fflush(stdin);
-        fgets(addEmployeeInfoInDataBase.employeeName,MAX_EMPLOYEE_NAME,stdin);
-        status = isNameValid(addEmployeeInfoInDataBase.employeeName);
+        fgets(addEmployeeInfoInDataBase.FirstName,MAX_FIRST_NAME,stdin);
+        status = isNameValid(addEmployeeInfoInDataBase.FirstName);
         if (!status)
         {
             printf("\n\t\t\tName contain invalid character. Please enter again.");
@@ -483,7 +484,7 @@ void addEmployeeInDataBase()
         printf("\n\t\t\tEnter date in format (day/month/year): ");
         scanf("%d/%d/%d",&addEmployeeInfoInDataBase.employeeJoiningDate.dd,&addEmployeeInfoInDataBase.employeeJoiningDate.mm,&addEmployeeInfoInDataBase.employeeJoiningDate.yyyy);
         //check date validity
-        status = isValidDate(&addEmployeeInfoInDataBase.employeeJoiningDate);
+        status = isDateValid(&addEmployeeInfoInDataBase.employeeJoiningDate);
         if (!status)
         {
             printf("\n\t\t\tPlease enter a valid date.\n");
@@ -493,7 +494,6 @@ void addEmployeeInDataBase()
     fwrite(&addEmployeeInfoInDataBase,sizeof(addEmployeeInfoInDataBase), 1, fp);
     fclose(fp);
 }
-
 
 //-----------VIEW EMPLOYEE DETAILS
 
