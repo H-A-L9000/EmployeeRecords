@@ -393,7 +393,106 @@ void updateCredential(void)
 
 //----------ADD EMPLOYEE
 
+// Add employee in list
 
+void addEmployeeInDataBase()
+{
+
+    s_EmployeesInfo addEmployeeInfoInDataBase = {0};
+
+    //File function that returns a FILE pointer
+    FILE *fp = NULL;
+    //Declare status variable and initialize it to 0
+    int status = 0;
+    //Opens the FILE and opens it in appending and reading in binary format
+
+    //NEED TO MAKE THE FILE
+    fp = fopen(FILE_NAME,"ab+");
+
+    //If the file pointer is null, display a message that the file is not opened
+    //then exit the program
+    if(fp == NULL)
+    {
+        printf("File is not opened\n");
+        exit(1);
+    }
+    //headMessage prints the message on the top of the console and
+    //prints the message
+
+    headMessage("ADD NEW EMPLOYEES");
+
+    //Asks the user to enter in their employee ID
+    printf("\n\n\t\t\tENTER YOUR DETAILS BELOW:");
+    printf("\n\t\t\t---------------------------------------------------------------------------\n");
+    printf("\n\t\t\tEmployee ID  = ");
+    fflush(stdin);
+
+    //Gets the employee ID from the user
+    scanf("%u",&addEmployeeInfoInDataBase.employee_id);
+
+
+    //Gets the employee last name
+    do
+    {
+        printf("\n\t\t\tLast Name  = ");
+        fflush(stdin);
+        fgets(addEmployeeInfoInDataBase.lastName,MAX_LAST_NAME,stdin);
+        status = isNameValid(addEmployeeInfoInDataBase.lastName);
+        if (!status)
+        {
+            printf("\n\t\t\tName contain invalid character. Please enter again.");
+        }
+    }
+
+    //Gets the employee name
+    while(!status);
+    do
+    {
+        printf("\n\t\t\tEmployee Name  = ");
+        fflush(stdin);
+        fgets(addEmployeeInfoInDataBase.employeeName,MAX_EMPLOYEE_NAME,stdin);
+        status = isNameValid(addEmployeeInfoInDataBase.employeeName);
+        if (!status)
+        {
+            printf("\n\t\t\tName contain invalid character. Please enter again.");
+        }
+    }
+
+    //Gets the employee address
+    while(!status);
+    do
+    {
+        printf("\n\t\t\tEmployee Address  = ");
+        fflush(stdin);
+        fgets(addEmployeeInfoInDataBase.employeeAddr,MAX_LAST_NAME,stdin);
+        status = isNameValid(addEmployeeInfoInDataBase.employeeAddr);
+        if (!status)
+        {
+            printf("\n\t\t\tName contain invalid character. Please enter again.");
+        }
+    }
+
+    //Gets the employee salary
+    while(!status);
+    printf("\n\t\t\tEmployee Salary  = ");
+    fflush(stdin);
+    scanf("%f",&addEmployeeInfoInDataBase.employeeSalary);
+    do
+    {
+        //get date year,month and day from user
+        printf("\n\t\t\tEnter date in format (day/month/year): ");
+        scanf("%d/%d/%d",&addEmployeeInfoInDataBase.employeeJoiningDate.dd,&addEmployeeInfoInDataBase.employeeJoiningDate.mm,&addEmployeeInfoInDataBase.employeeJoiningDate.yyyy);
+        //check date validity
+        status = isValidDate(&addEmployeeInfoInDataBase.employeeJoiningDate);
+        if (!status)
+        {
+            printf("\n\t\t\tPlease enter a valid date.\n");
+        }
+    }
+    while(!status);
+    fwrite(&addEmployeeInfoInDataBase,sizeof(addEmployeeInfoInDataBase), 1, fp);
+    fclose(fp);
+}
 
 
 //-----------VIEW EMPLOYEE DETAILS
