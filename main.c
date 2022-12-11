@@ -220,7 +220,17 @@ void login()
 
 //----------MAIN()
 
-
+//The main function runs all of the other function
+int main()
+{
+    //Calls the init function
+    init();
+    //Calls the welcomeMessage function
+    welcomeMessage();
+    //Calls the login function
+    login();
+    return 0;
+}
 
 
 //----------HEAD MESSAGE
