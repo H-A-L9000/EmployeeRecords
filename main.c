@@ -104,7 +104,56 @@ int isFileExists(const char *path)
 
 //----------init()
 
+void init()
+{
+    //File function that returns a FILE pointer
+    //Initialized to a null value, it does not point to any memory location
+    FILE *fp = NULL;
+    
+    //Initialize the status to 0
+    
+    int status = 0;
 
+    //Declare the char variable for default username
+    const char defaultUsername[] ="aticleworld\n";
+
+    //Declare the char variable for default password
+    const char defaultPassword[] ="aticleworld\n";
+    
+    //QUESTION
+    sFileHeader fileHeaderInfo = {0};
+
+    //NEED TEXT FILE
+    
+    //Checks to see if the file exists by running the isFileExists function
+    //then storing it into status
+    
+    status = isFileExists(text_file);
+    
+    //If status not equal to 0, then run the following code inside
+
+    if(!status)
+    {
+        //NEED TEXT FILE
+        
+        //fopen function will open up the text file
+        //and "wp" creates a binary file for writing
+        fp = fopen(text_file,"wb");
+
+        //If the file is not equal to null
+        if(fp != NULL)
+        {
+            //Copy default password to the file
+            strncpy(fileHeaderInfo.password,defaultPassword,sizeof(defaultPassword));
+            strncpy(fileHeaderInfo.username,defaultUsername,sizeof(defaultUsername));
+            
+            //fwrite to the file
+            fwrite(&fileHeaderInfo,FILE_HEADER_SIZE, 1, fp);
+            //Close the file
+            fclose(fp);
+        }
+    }
+}
 
 //----------LOGIN()
 //login password
