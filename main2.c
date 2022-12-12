@@ -8,8 +8,8 @@ typedef struct{
     
     char employeeName[MAX];
     int employeeID;
-    double wage;
-    double net_salary;
+    float wage;
+    float net_salary;
     
 } Employee;
 
@@ -19,7 +19,13 @@ Employee employees[MAX_EMPLOYEE] = =
 {
   {"Francine Dela-Cruz", 1234, 50, 50000},
   {"Halle Derry", 2345, 50, 50000},
-  {"Sienna Nguyen", 3456, 80, 80000} 
+  {"Sienna Nguyen", 3456, 80, 80000}, 
+  { "John Smith", 3921, 50, 80000}, 
+  {"Jane Doe", 3422, 20, 60000}, 
+  {"James Davis", 4555, 30, 90000},  
+  {"Kaitlyn Johnson, 0191, 20, 30000}, 
+  {"James Madison", 5115, 20, 30000}, 
+ 
 }
 
 
@@ -28,7 +34,9 @@ void manage_input(char);
 void addEmployee(); 
 void viewEmployees(); 
 void welcomeMessage(); 
-void showEmplo
+void showEmployee(); 
+
+
  
 int main()
 {
@@ -46,7 +54,6 @@ void welcomeMessage()
     printf("\n\t\t\t        =                  WELCOME                  =");
     printf("\n\t\t\t        =                    TO                     =");
     printf("\n\t\t\t        =               Employee Record             =");
-    printf("\n\t\t\t        =                 MANAGEMENT                =");
     printf("\n\t\t\t        =                   SYSTEM                  =");
     printf("\n\t\t\t        =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
     printf("\n\t\t\t  **-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**\n");
@@ -77,6 +84,7 @@ void main_menu()
 
 }
 
+
 void manage_input(char input) 
 {
     switch(input)
@@ -99,23 +107,35 @@ void manage_input(char input)
     }                                           //Switch Ended
 }
 
+
+
 void addEmployee()
 {
+    int add = 0; 
+    printf("Enter the number of employees you wish to add: "); 
+    scanf("%d", &add); 
+ 
     //number of employees
-    int n=2;
+    //int n=2;
 
     //array to store structure values of all employees
-    Employee employees[n];
+    //Employee employees[n];
  
     //Taking each employee detail as input
     printf("Enter %d Employee Details \n \n",n);
-    for(int i=0; i<n; i++){
+    for(int i=0; i < add ; i++){
         printf("Employee %d:- \n",i+1);
 
         //Name
         //printf("Employee Name: ");
         //fflush(stdin); 
         //fgets(employees[i].name, MAX, stdin);
+        //scanf("%s",employees[i].name);
+     
+        //Name
+        printf("Employee Name: ");
+        fflush(stdin); 
+        fgets(employees[i].name, MAX, stdin);
         //scanf("%s",employees[i].name);
         
         //ID
@@ -138,6 +158,8 @@ void addEmployee()
     }
     main_menu();
 }
+
+
 void viewEmployees()
 {
     int n=2;
@@ -147,7 +169,6 @@ void viewEmployees()
     Employee employees[n];      
     //Displaying Employee details
     printf("-------------- All Employees Details ---------------\n");
- 
     for(int i=0; i<n; i++){
  
         printf("Name \t: ");
@@ -163,26 +184,30 @@ void viewEmployees()
     }
     main_menu();
  
-    void searchEmployee(){
-     
-    int employeeID;
     
-    Employee employees[n];      
-   ///Searching for employee details
-    printf("-------------- Employee Search ---------------\n");
-    printf("Enter ID to search employee: ");
-    scanf("%d", &employeeID);
+
+}
+
+void showEmployees
+{
+    File *fptr = fopen("Employees.txt", "w");
+
+    if(file == NULL)
+    {
+        printf("File does not exist");
+        exit(1); 
+
+    }
+
+    puts(" "); 
+
+    for(int i = 0; i < MAX_EMPLOYEE; i++)
+    {
+        fprintf(fptr, "Employee:  %-32s  %d %.2f %.2f \n", i + 1, employees[i].name, employees[i].employeeID, employees[i].wage, employees[i].net_salary); 
+    }
+
+    fclose(fptr); 
+
     
- 
-    for (int i = 0; i < 10; ++i){
-        if (employees[i].id == employeeID){
-            printf("%s(%d):%f ", employees[i].name, employees[i].id, employees[i].net_salary);
-        }else{
-           printf("Employee is not found with that ID number. ");
-        }
-   }
-
-
-
-
+}
    
