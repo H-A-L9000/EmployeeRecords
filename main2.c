@@ -39,6 +39,7 @@ Employee employees[MAX_EMPLOYEE] =
  
 int main()
 {
+    showEmployee();
     welcomeMessage();
     main_menu(); 
     return 0; 
@@ -156,11 +157,11 @@ void searchEmployee()
     //Employee employees[n]; 
   
     //Searching employee details by ID
-    printf("-------------- Employees Search ---------------\n");
+    printf("-------------- Employee Search ---------------\n");
     printf("Enter ID to Search Employee: ");
     for (int i = 0; i < 10; ++i){
         if (employees[i].employeeID == employeeID){
-            printf("%d %s :%f ", employees[i].employeeID, employees[i].employeeName, employees[i].net_salary);       
+            printf("%d %s :%.2f ", employees[i].employeeID, employees[i].employeeName, employees[i].net_salary);       
         }
     }
     main_menu();
