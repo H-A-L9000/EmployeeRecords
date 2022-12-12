@@ -161,8 +161,6 @@ void searchEmployee()
     for (int i = 0; i < 10; ++i){
         if (employees[i].employeeID == employeeID){
             printf("%d %s :%f ", employees[i].employeeID, employees[i].employeeName, employees[i].net_salary);       
-        }else{
-            printf("Employee can't be found with that ID.");
         }
     }
     main_menu();
