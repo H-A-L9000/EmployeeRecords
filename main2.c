@@ -8,9 +8,10 @@
 
 typedef struct{
     
-    char employeeName[MAX];
+    char FirstName[MAX];
+    char LastName[MAX];
     int employeeID;
-    float wage;
+    float salary;
     float net_salary;
     
 } Employee;
@@ -88,9 +89,6 @@ void manage_input(char input)
         case '2':
             searchEmployee();
             break;
-        //case 3:
-            //searchEmployee();
-            //break;
         case '0':
             printf("\n\n\n\t\t\t\tThank you!!!\n\n\n\n\n");
             exit(1);
@@ -102,7 +100,17 @@ void manage_input(char input)
 
 void addEmployee()
 {
+    FILE *fp = NULL;
+    int status = 0; 
+    fp = fopen("Employees.txt", "a+");
+    if(fp == NULL)
+    {
+        printf("File cannot be opened\n");
+        exit(1);
+    }
+
     int add = 0; 
+    int i;
     printf("Enter the number of employees you wish to add: "); 
     scanf("%d", &add); 
  
@@ -113,20 +121,20 @@ void addEmployee()
  
     //Taking each employee detail as input
     printf("Enter %d Employee Details \n \n",add);
-    for(int i=0; i < add ; i++){
+    for(i=0; i < add ; i++){
         printf("Employee %d:- \n",i+1);
         
-        //Name
-        //printf("Employee Name: ");
-        //fflush(stdin); 
-        //fgets(employees[i].name, MAX, stdin);
-        //scanf("%s",employees[i].name);
      
         //Name
-        printf("Employee Name: ");
+        printf("Last Name: ");
         fflush(stdin); 
-        fgets(employees[i].employeeName, MAX, stdin);
-        //scanf("%s",employees[i].name);
+        //fgets(&employees[i].LastName, MAX, stdin);
+        scanf("%s", employees[i].LastName);
+
+        printf("First Name: ");
+        fflush(stdin); 
+        //fgets(&employees[i].employeeName, MAX, stdin);
+        scanf("%s", employees[i].FirstName);
         
         //ID
         printf("Employee Id: ");
@@ -135,16 +143,32 @@ void addEmployee()
         scanf("%d",&employees[i].employeeID);
         
         //Salary
-        printf("Wage: ");
+        printf("Gross Salary: ");
         fflush(stdin); 
         //fgets(employees[i].basic_salary, sizeof(employees[i].basic_salary), stdin ); 
-        scanf("%f",&employees[i].wage);
+        scanf("%f",&employees[i].salary);
         
         //to consume extra '\n' input
         char ch = getchar();
  
         printf("\n");
+
+        printf("\nHRA is 10%% of gross salary.\n\n");
+        printf("DA is 5%% of gross salary.\n\n");
+        printf("PF is 8%% of gross salary."); 
+
+
+        employees[i].net_salary = employees[i].salary - (employees[i].salary*0.10 + employees[i].salary*0.05 + employees[i].salary*0.08);
+
+        printf("\n\nCalculating Net Salary... \n");
+        printf("Net Salary: %.2f ", employees[i].net_salary); 
+
+        
+
+        
     }
+    fprintf(fp, "Employee:  %-d %-32s %s %d %.2f %.2f \n", i + 1, employees[i].FirstName, employees[i].LastName, employees[i].employeeID, employees[i].salary, employees[i].net_salary);
+    fclose(fp);
     main_menu();
 }
 
