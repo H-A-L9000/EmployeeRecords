@@ -67,8 +67,7 @@ void main_menu()
     printf("--------------MENU---------------");
     printf("\n=================================");
     printf("\n\n\n\t\t\t1.Add employee");
-    printf("\n\t\t\t2.View Employees");
-    printf("\n\t\t\t3.Search employee");
+    printf("\n\t\t\t2.Search employee");
     printf("\n\t\t\t0.Exit");
     printf("\n\n\n\t\t\tEnter choice => ");
     
