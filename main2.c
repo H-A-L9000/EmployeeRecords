@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
- #define MAX 30
- #define MAX_ID 6
+
+
+#define MAX 30
+#define MAX_ID 6
 #define MAX_EMPLOYEE 10 
 
 typedef struct{
@@ -13,9 +15,15 @@ typedef struct{
     
 } Employee;
 
-    //number of employees
+void main_menu(); 
+void manage_input(char); 
+void addEmployee(); 
+void searchEmployee();
+//void viewEmployees(); 
+void welcomeMessage(); 
+void showEmployee(); 
 
-Employee employees[MAX_EMPLOYEE] = =
+Employee employees[MAX_EMPLOYEE] =
 {
   {"Francine Dela-Cruz", 1234, 50, 50000},
   {"Halle Derry", 2345, 50, 50000},
@@ -23,20 +31,10 @@ Employee employees[MAX_EMPLOYEE] = =
   { "John Smith", 3921, 50, 80000}, 
   {"Jane Doe", 3422, 20, 60000}, 
   {"James Davis", 4555, 30, 90000},  
-  {"Kaitlyn Johnson, 0191, 20, 30000}, 
+  {"Kaitlyn Johnson", 1191, 20, 30000}, 
   {"James Madison", 5115, 20, 30000}, 
  
-}
-
-
-void main_menu(); 
-void manage_input(char); 
-void addEmployee(); 
-void viewEmployees(); 
-void searchEmployee();
-void welcomeMessage(); 
-void showEmployee(); 
-
+};
 
  
 int main()
@@ -45,7 +43,6 @@ int main()
     main_menu(); 
     return 0; 
 }
-
 void welcomeMessage()
 {
     //headMessage("www.aticleworld.com");
@@ -64,9 +61,7 @@ void welcomeMessage()
 
 void main_menu()
 {
-
     system("cls");
-
     printf("\n=================================\n");
     printf("--------------MENU---------------");
     printf("\n=================================");
@@ -77,14 +72,11 @@ void main_menu()
     printf("\n\n\n\t\t\tEnter choice => ");
     
     char input;
-
     while ((input = getchar()) != EOF)
     {
         manage_input(input);
     }
-
 }
-
 
 void manage_input(char input) 
 {
@@ -94,7 +86,7 @@ void manage_input(char input)
             addEmployee();
             break;
         case '2':
-            viewEmployees();
+            searchEmployee();
             break;
         //case 3:
             //searchEmployee();
@@ -108,8 +100,6 @@ void manage_input(char input)
     }                                           //Switch Ended
 }
 
-
-
 void addEmployee()
 {
     int add = 0; 
@@ -118,15 +108,14 @@ void addEmployee()
  
     //number of employees
     //int n=2;
-
     //array to store structure values of all employees
     //Employee employees[n];
  
     //Taking each employee detail as input
-    printf("Enter %d Employee Details \n \n",n);
+    printf("Enter %d Employee Details \n \n",add);
     for(int i=0; i < add ; i++){
         printf("Employee %d:- \n",i+1);
-
+        
         //Name
         //printf("Employee Name: ");
         //fflush(stdin); 
@@ -136,22 +125,21 @@ void addEmployee()
         //Name
         printf("Employee Name: ");
         fflush(stdin); 
-        fgets(employees[i].name, MAX, stdin);
+        fgets(employees[i].employeeName, MAX, stdin);
         //scanf("%s",employees[i].name);
         
         //ID
         printf("Employee Id: ");
         fflush(stdin);
         //fgets(employees[i].id, 6, stdin);
-        scanf("%d",&employees[i].id);
+        scanf("%d",&employees[i].employeeID);
         
         //Salary
-        printf("Basic Salary: ");
+        printf("Wage: ");
         fflush(stdin); 
         //fgets(employees[i].basic_salary, sizeof(employees[i].basic_salary), stdin ); 
-        scanf("%lf",&employees[i].basic_salary);
+        scanf("%f",&employees[i].wage);
         
-
         //to consume extra '\n' input
         char ch = getchar();
  
@@ -160,71 +148,67 @@ void addEmployee()
     main_menu();
 }
 
-
-void viewEmployees()
+void searchEmployee()
 {
-    int n=2;
-    
-    //array to store structure values of all employees
-
-    Employee employees[n];      
-    //Displaying Employee details
-    printf("-------------- All Employees Details ---------------\n");
-    for(int i=0; i<n; i++){
- 
-        printf("Name \t: ");
-        printf("%s \n",employees[i].name);
- 
-        printf("Id \t: ");
-        printf("%d \n",employees[i].id);
- 
-        printf("Salary \t: ");
-        printf("%.2lf \n",employees[i].net_salary);
- 
-        printf("\n");
-    }
-    main_menu();
- 
- void searchEmployee(){
     int employeeID;
     
     //array to store structure values of all employees
-    Employee employees[n]; 
+    //Employee employees[n]; 
   
     //Searching employee details by ID
     printf("-------------- Employees Search ---------------\n");
     printf("Enter ID to Search Employee: ");
     for (int i = 0; i < 10; ++i){
-        if (employees[i].id == employeeID){
-            printf("%d %s :%f ", employees[i].id, employees[i].name, employees[i].net_salary);       
+        if (employees[i].employeeID == employeeID){
+            printf("%d %s :%f ", employees[i].employeeID, employees[i].employeeName, employees[i].net_salary);       
         }else{
             printf("Employee can't be found with that ID.");
         }
+    }
     main_menu();
     
-
 }
 
-void showEmployee
-{
-    File *fptr = fopen("Employees.txt", "w");
+// void viewEmployees()
+// {
+//     //int n=2;
+    
+//     //array to store structure values of all employees
+//     //Employee employees[n];      
+//     //Displaying Employee details
+//     printf("-------------- All Employees Details ---------------\n");
+//     for(int i=0; i<MAX_EMPLOYEE; i++){
+ 
+//         printf("Name \t: ");
+//         printf("%s \n",employees[i].employeeName);
+ 
+//         printf("Id \t: ");
+//         printf("%d \n",employees[i].employeeID);
+ 
+//         printf("Salary \t: ");
+//         printf("%.2lf \n",employees[i].net_salary);
+ 
+//         printf("\n");
+//     }
+//     main_menu();
+ 
+    
+// }
 
-    if(file == NULL)
+void showEmployee()
+{
+    FILE *fptr = fopen("Employees.txt", "w");
+    if(fptr == NULL)
     {
         printf("File does not exist");
         exit(1); 
-
     }
-
     puts(" "); 
-
     for(int i = 0; i < MAX_EMPLOYEE; i++)
     {
-        fprintf(fptr, "Employee:  %-32s  %d %.2f %.2f \n", i + 1, employees[i].name, employees[i].employeeID, employees[i].wage, employees[i].net_salary); 
+        fprintf(fptr, "Employee:  %-d %-32s %d %.2f %.2f \n", i + 1, employees[i].employeeName, employees[i].employeeID, employees[i].wage, employees[i].net_salary); 
     }
-
     fclose(fptr); 
-
     
 }
    
