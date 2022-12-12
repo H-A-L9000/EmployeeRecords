@@ -184,6 +184,22 @@ void viewEmployees()
     }
     main_menu();
  
+ void searchEmployee(){
+    int employeeID;
+    
+    //array to store structure values of all employees
+    Employee employees[n]; 
+  
+    //Displaying Employee details
+    printf("-------------- Employees Search ---------------\n");
+    printf("Enter ID to Search Employee: ");
+    for (int i = 0; i < 10; ++i){
+        if (employees[i].id == employeeID){
+            printf("%d %s :%f ", employees[i].id, employees[i].name, employees[i].net_salary);       
+        }else{
+            printf("Employee can't be found with that ID.");
+        }
+    main_menu();
     
 
 }
