@@ -147,6 +147,7 @@ void viewEmployees()
     Employee employees[n];      
     //Displaying Employee details
     printf("-------------- All Employees Details ---------------\n");
+ 
     for(int i=0; i<n; i++){
  
         printf("Name \t: ");
@@ -162,7 +163,26 @@ void viewEmployees()
     }
     main_menu();
  
+    void searchEmployee(){
+     
+    int employeeID;
     
+    Employee employees[n];      
+   ///Searching for employee details
+    printf("-------------- Employee Search ---------------\n");
+    printf("Enter ID to search employee: ");
+    scanf("%d", &employeeID);
+    
+ 
+    for (int i = 0; i < 10; ++i){
+        if (employees[i].id == employeeID){
+            printf("%s(%d):%f ", employees[i].name, employees[i].id, employees[i].net_salary);
+        }else{
+           printf("Employee is not found with that ID number. ");
+        }
+   }
 
-}
+
+
+
    
