@@ -188,7 +188,7 @@ void viewEmployees()
 
 }
 
-void showEmployees
+void showEmployee
 {
     File *fptr = fopen("Employees.txt", "w");
 
