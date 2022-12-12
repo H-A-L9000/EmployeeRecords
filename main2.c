@@ -33,6 +33,7 @@ void main_menu();
 void manage_input(char); 
 void addEmployee(); 
 void viewEmployees(); 
+void searchEmployee();
 void welcomeMessage(); 
 void showEmployee(); 
 
@@ -190,7 +191,7 @@ void viewEmployees()
     //array to store structure values of all employees
     Employee employees[n]; 
   
-    //Displaying Employee details
+    //Searching employee details by ID
     printf("-------------- Employees Search ---------------\n");
     printf("Enter ID to Search Employee: ");
     for (int i = 0; i < 10; ++i){
