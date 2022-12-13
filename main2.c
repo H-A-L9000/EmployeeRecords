@@ -41,9 +41,10 @@ Employee employees[MAX_EMPLOYEE] =
  
 int main()
 {
+    welcomeMessage();
     login();
     showEmployee();
-    welcomeMessage();
+    
     return 0; 
 }
 void welcomeMessage()
@@ -60,6 +61,7 @@ void welcomeMessage()
     printf("\n\t\t\t  **-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**\n");
     printf("\n\n\n\t\t\t Enter any key to continue.....");
     getchar();
+    system("cls");
 }
 void login()
 {
@@ -76,7 +78,7 @@ void login()
 	printf("\nEnter the password: ");
 	scanf("%s", &pass);
 
-	if((strcmp(username, user)) && (strcmp(password,pass))){
+	if(strcmp(username,user)==0 && strcmp(password,pass)==0){
             main_menu();
         }
         else
@@ -98,7 +100,7 @@ void main_menu()
     printf("\n\t\t\t2.Search employee");
     printf("\n\t\t\t0.Exit");
     printf("\n\n\n\t\t\tEnter choice => ");
-    
+    getchar();
     char input;
     while ((input = getchar()) != EOF)
     {
