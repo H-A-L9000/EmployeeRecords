@@ -87,11 +87,16 @@ void main_menu()
    printf("\n\t\t\t4.Exit");
    printf("\n\n\n\t\t\tEnter choice => ");
 	
-//
+   //create a variable to store the input  
    char input;
-   while ((input = getchar()) != EOF)
+   
+   //get char() reads a single character from the standard input stream stdin
+	
+   //use getchar() to fetch input 
+	
+   while ((input = getchar()) != EOF) //exit while loop if reaches end of line , EOF is received when there is no more input 
    {
-       manage_input(input);
+       manage_input(input); //call manage_input with input 
 
    }
        
