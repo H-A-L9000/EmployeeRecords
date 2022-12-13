@@ -16,6 +16,7 @@ typedef struct{
     
 } Employee;
 
+void login();
 void main_menu(); 
 void manage_input(char); 
 void addEmployee(); 
@@ -40,6 +41,7 @@ Employee employees[MAX_EMPLOYEE] =
  
 int main()
 {
+    login();
     showEmployee();
     welcomeMessage();
     return 0; 
