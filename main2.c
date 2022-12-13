@@ -42,7 +42,6 @@ int main()
 {
     showEmployee();
     welcomeMessage();
-    main_menu(); 
     return 0; 
 }
 void welcomeMessage()
@@ -60,7 +59,33 @@ void welcomeMessage()
     printf("\n\n\n\t\t\t Enter any key to continue.....");
     getchar();
 }
+void login()
+{
+	char *username = "EmployeeProject";
+	char *password = "C&UNix22";
+    int attempts = 4;
+	char user[100];
+    char pass[100];
 
+    for(int i = 0; i < attempts; i++){
+	printf("Enter the username: ");
+	scanf("%s", &user);
+
+	printf("\nEnter the password: ");
+	scanf("%s", &pass);
+
+	if((strcmp(username, user)) && (strcmp(password,pass))){
+            main_menu();
+        }
+        else
+        {
+            printf("\t\t\t\tUserName or Password is invalid\n\n");
+            
+        }
+
+    }
+    main_menu();
+}
 void main_menu()
 {
     system("cls");
