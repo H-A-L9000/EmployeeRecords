@@ -36,6 +36,7 @@ void addEmployee();
 void searchEmployee(); 
 void welcomeMessage(); 
 void BinaryToText();
+void logOut();
 void login(); 
 
 //new_Employee n_employees[MAX_EMPLOYEE];
@@ -65,7 +66,7 @@ void welcomeMessage()
     printf("\n\t\t\t        =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
     printf("\n\t\t\t  **-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**\n");
     printf("\n\n\n\t\t\t Enter any key to continue.....\n\n");
-    getchar();
+    getch();
 }
 
 
@@ -110,6 +111,38 @@ void manage_input(char input)
         default:
             printf("\n\n\n\t\t\tINVALID INPUT!!! Enter Choice =>");
     }                                           //Switch Ended
+}
+
+void login(){
+	char *username = "EmployeeProject";
+	char *password = "C&UNix22";
+    time_t t;   // not a primitive datatype
+    time(&t);
+    int attempts = 4;
+	char user[100];
+    char pass[100];
+
+    for(int i = 0; i < attempts; i++){
+
+    printf("Enter the username: ");
+	scanf("%s", &user);
+
+	printf("\nEnter the password: ");
+	scanf("%s", &pass);
+
+    if(strcmp(username,user)==0 && strcmp(password,pass)==0){;
+
+    printf("\nYou've logged in at: %s", ctime(&t));
+
+            main_menu();
+        }
+        else
+        {
+            printf("\t\t\t\tUserName or Password is invalid\n\n");
+
+        }
+    }
+
 }
 
 void addEmployee()
@@ -291,6 +324,17 @@ void showAllEmployees()
     
 
 }
+
+void logOut(){
+    time_t t;   // not a primitive datatype
+    time(&t);
+
+    system("CLS");
+    printf("Log out successful");
+    printf("\nYou've logged out at: %s", ctime(&t));
+
+    exit(0);
+    }
 
 void BinaryToText() {
     unsigned char str[256];
