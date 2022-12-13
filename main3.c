@@ -130,6 +130,10 @@ void manage_input(char input)
     }                                           //Switch Ended
 }
 
+//Login function allows the user to log into the system
+
+//Using pointer variables to store in strings
+
 void login(){
 	char *username = "EmployeeProject";
 	char *password = "C&UNix22";
@@ -138,7 +142,7 @@ void login(){
     int attempts = 4;
 	char user[100];
     char pass[100];
-
+//Loop to count the amount of attempts
     for(int i = 0; i < attempts; i++){
 
     printf("Enter the username: ");
@@ -146,7 +150,9 @@ void login(){
 
 	printf("\nEnter the password: ");
 	scanf("%s", &pass);
-
+//strcmp function compares the string arguments
+//If statement that confirms the correct username and password
+//==0 means true
     if(strcmp(username,user)==0 && strcmp(password,pass)==0){;
 
     printf("\nYou've logged in at: %s", ctime(&t));
