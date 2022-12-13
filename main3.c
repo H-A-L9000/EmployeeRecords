@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include<string.h> 
-
+#inlcude <time.h>
 
 //macro definitions 
 //allows for constant values to be declared throughout code, used globally  
@@ -104,6 +104,7 @@ void manage_input(char input)
             break;
         case '4':
             printf("\n\n\n\t\t\t\tThank you!!!\n\n\n\n\n");
+	    logOut();
             exit(1);
             break;
         case '\n':
@@ -336,25 +337,6 @@ void logOut(){
     exit(0);
     }
 
-void BinaryToText() {
-    unsigned char str[256];
-    unsigned int num;  // assuming 32 bit ints
-    int i, len;
-
-    FILE *finp = fopen(FILE_NAME, "rb");
-    FILE *fout = fopen(OUTPUT_FILE, "w+");
-
-    while ((len = fgetc(finp)) != EOF) {
-        fread(str, len, 1, finp);
-        str[len] = '\0';
-        num  = (unsigned int)fgetc(finp) << 24;
-        num |= fgetc(finp) << 16;
-        num |= fgetc(finp) << 8;
-        num |= fgetc(finp);
-        fprintf(fout, "%s %d\n", (char*)str, num);
-    }
-    fclose(finp);
-    fclose(fout);
 }
 
 
