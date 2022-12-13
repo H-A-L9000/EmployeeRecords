@@ -1,3 +1,4 @@
+//Declaring header files
 #include <stdio.h>
 #include <stdlib.h>
 #include<string.h> 
@@ -16,6 +17,8 @@
 #define OUTPUT_FILE "EmployeeDatabaseRead.txt"
 
 //define anonymous struct and give it alias Employee
+//This struct is grouping several related variables into one place,
+//which is called Employee
 struct Employee{
     
     char FirstName[MAX_FIRST];
@@ -26,9 +29,7 @@ struct Employee{
     
 };
 
-
-
-
+//Declaring function prototypes for all the functions
 void main_menu(); 
 void showAllEmployees();
 void manage_input(char); 
@@ -41,6 +42,7 @@ void login();
 
 //new_Employee n_employees[MAX_EMPLOYEE];
 
+//Global variable 
 struct Employee employees;
 
  
@@ -54,6 +56,9 @@ int main()
     //main_menu(); 
     return 0; 
 }
+
+//The first page the user is redirected to
+
 void welcomeMessage()
 {
     printf("\n\n\n\n\n");
@@ -66,10 +71,12 @@ void welcomeMessage()
     printf("\n\t\t\t        =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
     printf("\n\t\t\t  **-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**\n");
     printf("\n\n\n\t\t\t Enter any key to continue.....\n\n");
+	
+//getch() function will pause the output console until a key is pressed
     getch();
 }
 
-
+//After the user successfully logs in, the menu will be displayed
 void main_menu()
 {
     printf("\n\t\t\t--------------MENU---------------");
@@ -79,7 +86,8 @@ void main_menu()
    printf("\n\t\t\t3.Show Current Employees");
    printf("\n\t\t\t4.Exit");
    printf("\n\n\n\t\t\tEnter choice => ");
-   
+	
+//
    char input;
    while ((input = getchar()) != EOF)
    {
@@ -88,6 +96,9 @@ void main_menu()
    }
        manage_input(input);
 }
+
+//Function to get the input from the user to select an option
+//Using switch cases to 
 
 void manage_input(char input) 
 {
@@ -326,17 +337,24 @@ void showAllEmployees()
 
 }
 
+//LogOut function to allow the user to log out
+//time_t is a datatype from the <time.h> header file,
+//This system's time values are returned from the standard library function named time().
+
 void logOut(){
     time_t t;   // not a primitive datatype
     time(&t);
-
+	
+//Clear the screen
     system("CLS");
     printf("Log out successful");
+	
+//The function ctime() returns a string that represents the local time based on tm (argument) timer. 
+//The ctime() function is defined in time.h header file.
     printf("\nYou've logged out at: %s", ctime(&t));
 
     exit(0);
     }
-
 }
 
 
