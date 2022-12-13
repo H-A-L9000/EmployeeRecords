@@ -190,7 +190,7 @@ void addEmployee()
         employees[i].net_salary = employees[i].salary - (employees[i].salary*0.10 + employees[i].salary*0.05 + employees[i].salary*0.08);
 
         printf("\n\nCalculating Net Salary... \n");
-        printf("Net Salary: %.2f ", employees[i].net_salary); 
+        printf("\n\nNet Salary: %.2f \n", employees[i].net_salary); 
 
         
 
@@ -246,9 +246,35 @@ void searchEmployee()
     
 // }
 
+void showAllEmployees()
+{
+    printf("-------------- All Employees Details ---------------\n");
+    for(int i=0; i<MAX_EMPLOYEE; i++)
+    {
+        printf("First Name \t: ");
+        printf("%s \n",employees[i].FirstName);
+
+        printf("Last Name \t: ");
+        printf("%s \n",employees[i].LastName);
+ 
+        printf("Id \t: ");
+        printf("%d \n",employees[i].employeeID);
+ 
+        printf("Salary \t: ");
+        printf("%.2lf \n",employees[i].net_salary);
+ 
+        printf("\n");
+    }
+
+    // go back to main menu when done
+    main_menu();
+
+}
+
+
 void showEmployee()
 {
-    FILE *fptr = fopen("Employees.txt", "w");
+    FILE *fptr = fopen("Employees.txt", "w+");
     if(fptr == NULL)
     {
         printf("File does not exist");
@@ -257,7 +283,7 @@ void showEmployee()
     puts(" "); 
     for(int i = 0; i < MAX_EMPLOYEE; i++)
     {
-        fprintf(fptr, "Employee:  %-d %-32s %d %.2f %.2f \n", i + 1, employees[i].employeeName, employees[i].employeeID, employees[i].wage, employees[i].net_salary); 
+        fprintf(fptr, "Employee:  %-d %-32s %d %.2f %.2f \n", i + 1, employees[i].FirstName, employees[i].LastName, employees[i].employeeID, employees[i].salary, employees[i].net_salary); 
     }
     fclose(fptr); 
     
