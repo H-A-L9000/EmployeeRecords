@@ -98,6 +98,7 @@ void main_menu()
     printf("\n=================================");
     printf("\n\n\n\t\t\t1.Add employee");
     printf("\n\t\t\t2.Search employee");
+    printf("\n\t\t\t3.Show Current Employees");
     printf("\n\t\t\t0.Exit");
     printf("\n\n\n\t\t\tEnter choice => ");
     getchar();
@@ -117,6 +118,9 @@ void manage_input(char input)
             break;
         case '2':
             searchEmployee();
+            break;
+	case '3':
+            showAllEmployees();
             break;
         case '0':
             printf("\n\n\n\t\t\t\tThank you!!!\n\n\n\n\n");
