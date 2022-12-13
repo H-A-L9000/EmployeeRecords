@@ -68,39 +68,6 @@ void welcomeMessage()
     getchar();
 }
 
-void login()
-{ char userName[]="Admin", password[]="123456", un[20], pwd[20];
-    int n=1, x, y, i;
-
-    do{
-         printf("\nUsername:");
-         scanf("%s", un);
-         fflush(stdout);
-
-         printf("\nPassword:");
-         scanf("%s", pwd);
-         fflush(stdout);
-
-         x=strcmp(un, userName);
-         y=strcmp(pwd, password);
-
-         if(x==0 && y==0){
-           printf("\nSucessfully Logged In");
-           main_menu();
-           //break;
-         }else {
-           printf("\nWrong Password, try again");
-            getchar();
-            n++;}
-
-         if(n>3){
-          printf("\nAccess Denied");
-          getchar();
-          }
-
-       }while (n<=3);
-
-}
 
 void main_menu()
 {
