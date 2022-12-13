@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include<string.h> 
-#inlcude <time.h>
+#include <time.h>
 
 //macro definitions 
 //allows for constant values to be declared throughout code, used globally  
