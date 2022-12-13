@@ -34,6 +34,7 @@ void addEmployee();
 void searchEmployee(); 
 void welcomeMessage(); 
 void BinaryToText();
+void login(); 
 
 //new_Employee n_employees[MAX_EMPLOYEE];
 
@@ -44,9 +45,10 @@ int main()
 { 
     //calls welcomeMessage function 
     welcomeMessage();
-    BinaryToText(); 
+    login();
+    //BinaryToText(); 
     //calls main_menu function
-    main_menu(); 
+    //main_menu(); 
     return 0; 
 }
 void welcomeMessage()
@@ -62,6 +64,40 @@ void welcomeMessage()
     printf("\n\t\t\t  **-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**\n");
     printf("\n\n\n\t\t\t Enter any key to continue.....\n\n");
     getchar();
+}
+
+void login()
+{ char userName[]="Admin", password[]="123456", un[20], pwd[20];
+    int n=1, x, y, i;
+
+    do{
+         printf("\nUsername:");
+         scanf("%s", un);
+         fflush(stdout);
+
+         printf("\nPassword:");
+         scanf("%s", pwd);
+         fflush(stdout);
+
+         x=strcmp(un, userName);
+         y=strcmp(pwd, password);
+
+         if(x==0 && y==0){
+           printf("\nSucessfully Logged In");
+           main_menu();
+           //break;
+         }else {
+           printf("\nWrong Password, try again");
+            getchar();
+            n++;}
+
+         if(n>3){
+          printf("\nAccess Denied");
+          getchar();
+          }
+
+       }while (n<=3);
+
 }
 
 void main_menu()
