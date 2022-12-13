@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include<string.h> 
+
 
 //macro definitions 
 //allows for constant values to be declared throughout code, used globally  
