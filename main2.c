@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 
 #define MAX 30
@@ -24,6 +25,7 @@ void searchEmployee();
 //void viewEmployees(); 
 void welcomeMessage(); 
 void showEmployee(); 
+void showAllEmployees();
 
 Employee employees[MAX_EMPLOYEE] =
 {
@@ -217,7 +219,7 @@ void searchEmployee()
     printf("Enter ID to Search Employee: ");
     for (int i = 0; i < 10; ++i){
         if (employees[i].employeeID == employeeID){
-            printf("%d %s :%.2f ", employees[i].employeeID, employees[i].employeeName, employees[i].net_salary);       
+            printf("%d %s %s :%.2f ", employees[i].employeeID, employees[i].FirstName, employees[i].LastName ,employees[i].net_salary);       
         }
     }
     main_menu();
@@ -287,9 +289,11 @@ void showEmployee()
     puts(" "); 
     for(int i = 0; i < MAX_EMPLOYEE; i++)
     {
-        fprintf(fptr, "Employee:  %-d %-32s %d %.2f %.2f \n", i + 1, employees[i].FirstName, employees[i].LastName, employees[i].employeeID, employees[i].salary, employees[i].net_salary); 
+        fprintf(fptr, "Employee:  %-d %-32s %s %d %.2f %.2f \n", i + 1, employees[i].FirstName, employees[i].LastName, employees[i].employeeID, employees[i].salary, employees[i].net_salary); 
     }
     fclose(fptr); 
     
 }
+    
+
    
