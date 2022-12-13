@@ -173,8 +173,8 @@ void addEmployee()
     
     FILE *fp = NULL;
     int status = 0; 
-    //Open file for writing in binary mode. 
-    //If the file exists, its contents are overwritten. If the file does not exist, it will be created.
+    //Open for both reading and appending in binary mode. 
+    //If the file does not exist, it will be created.
     fp = fopen(FILE_NAME, "ab+");
 
     // //Check file exist or not
