@@ -94,7 +94,7 @@ void main_menu()
        manage_input(input);
 
    }
-       manage_input(input);
+       
 }
 
 //Function to get the input from the user to select an option
